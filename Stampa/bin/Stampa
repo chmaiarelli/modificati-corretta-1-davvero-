@@ -1,0 +1,24 @@
+#!/bin/bash
+if [ -z $1 ]
+then
+	echo 'manca il parametro della data' >&2
+	echo 'formato data sbagliato deve essere YYYY-MM-DD-HH:mm' >&2
+else	
+	nomiFile=`ls`
+	File=0
+		echo
+	echo 'Elenco file modificati'
+	echo
+
+	for i in $nomiFile
+	do
+		data=`stat -c %y $i`
+
+		data="${dataFile:0:10}-${dataFile:11:5}"
+		if [[ $dataFile > $1 ]]
+		then
+			nFile=$((nFile+1))
+			echo "File n.$nFile: $i"
+		fi
+	done
+fi
